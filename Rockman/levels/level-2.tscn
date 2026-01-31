@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://chvsbqfskb5ae"]
+
+[ext_resource type="Texture2D" uid="uid://dsf1r7na6v3j5" path="res://levels/Level-2.jpg" id="1_7068u"]
+[ext_resource type="PackedScene" uid="uid://b5w5r3gq4yvj7" path="res://player/player.tscn" id="2_mobua"]
+[ext_resource type="AudioStream" uid="uid://bwbq2dn3u4iaw" path="res://levels/Level-2.mp3" id="3_7068u"]
+[ext_resource type="Script" uid="uid://cwn4o2gigwhvd" path="res://levels/music_player.gd" id="4_focia"]
+[ext_resource type="PackedScene" uid="uid://bvyxyeq6d8u1o" path="res://levels/enemy.tscn" id="5_mobua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c6y8"]
+size = Vector2(2118, 20)
+
+[node name="Level-2" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 2128.0
+offset_bottom = 845.0
+texture = ExtResource("1_7068u")
+expand_mode = 3
+
+[node name="Player" parent="." instance=ExtResource("2_mobua")]
+position = Vector2(177, 394)
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(576, 600)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -576.0
+offset_top = -10.0
+offset_right = 1546.0
+offset_bottom = 46.0
+color = Color(0.12549, 0.698039, 0.352941, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(483, 0)
+shape = SubResource("RectangleShape2D_0c6y8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7068u")
+autoplay = true
+script = ExtResource("4_focia")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 321)
+limit_left = 0
+limit_right = 2000
+
+[node name="Enemy" parent="." instance=ExtResource("5_mobua")]
+position = Vector2(28, -2)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_mobua")]
+position = Vector2(139, -4)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_mobua")]
+position = Vector2(275, -15)
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

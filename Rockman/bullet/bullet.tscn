@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1v2j3j4k5l6"]
+
+[ext_resource type="Script" uid="uid://uy4afo0rlcwv" path="res://bullet/bullet.gd" id="1_abcde"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fghij"]
+radius = 5.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_abcde")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fghij")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

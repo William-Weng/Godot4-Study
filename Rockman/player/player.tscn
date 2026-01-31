@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5w5r3gq4yvj7"]
+
+[ext_resource type="Texture2D" uid="uid://bhoh480ng5rht" path="res://rockman.svg" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://dvkvcdf62nr0x" path="res://player/player.gd" id="2_v2a2d"]
+[ext_resource type="Script" uid="uid://csja6fvaryrv8" path="res://player/animated_circle.gd" id="3_g1dw6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8u4y"]
+radius = 123.0
+height = 248.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("2_v2a2d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rkbax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x8u4y")
+
+[node name="AnimatedCircle" type="Area2D" parent="."]
+script = ExtResource("3_g1dw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedCircle"]
+shape = SubResource("RectangleShape2D_g1dw6")

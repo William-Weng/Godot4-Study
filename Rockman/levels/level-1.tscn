@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2b7i6lpa1g1q"]
+
+[ext_resource type="Texture2D" uid="uid://cqmsvva3cnlkh" path="res://levels/Level-1.png" id="1_gwcku"]
+[ext_resource type="PackedScene" uid="uid://b5w5r3gq4yvj7" path="res://player/player.tscn" id="2_0yv42"]
+[ext_resource type="AudioStream" uid="uid://dxa0mnl4m0ra3" path="res://levels/Level-1.mp3" id="3_7tkes"]
+[ext_resource type="Script" uid="uid://cwn4o2gigwhvd" path="res://levels/music_player.gd" id="4_mvbp1"]
+[ext_resource type="Script" uid="uid://burkenbkoiv63" path="res://exit_area.gd" id="5_ogvtk"]
+[ext_resource type="PackedScene" uid="uid://bvyxyeq6d8u1o" path="res://levels/enemy.tscn" id="6_oewpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c6y8"]
+size = Vector2(2118, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwiv4"]
+size = Vector2(308, 854)
+
+[node name="Level-1" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 2002.0
+offset_bottom = 641.0
+texture = ExtResource("1_gwcku")
+
+[node name="Player" parent="." instance=ExtResource("2_0yv42")]
+position = Vector2(154, 484)
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(576, 600)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -576.0
+offset_top = -10.0
+offset_right = 1546.0
+offset_bottom = 46.0
+color = Color(0.12549, 0.698039, 0.352941, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(483, 0)
+shape = SubResource("RectangleShape2D_0c6y8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7tkes")
+autoplay = true
+script = ExtResource("4_mvbp1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 321)
+limit_left = 0
+limit_right = 2000
+
+[node name="ExitArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_ogvtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(1862, 281)
+shape = SubResource("RectangleShape2D_gwiv4")
+
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("6_oewpf")]
+position = Vector2(-156, 2)
+
+[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("6_oewpf")]
+position = Vector2(-21, 4)
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

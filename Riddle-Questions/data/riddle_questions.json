@@ -1,0 +1,18 @@
+{
+  "questions": [
+	{
+	  "title": "第一題",
+	  "prompt": "這是＿＿＿",
+	  "answer": "愛馬仕",
+	  "left_image": "res://art/persimmon_left.png",
+	  "right_image": "res://art/persimmon_right.png"
+	},
+	{
+	  "title": "第二題",
+	  "prompt": "這是＿＿＿",
+	  "answer": "柿子獅",
+	  "left_image": "res://art/persimmon_right.png",
+	  "right_image": "res://art/persimmon_left.png"
+	}
+  ]
+}

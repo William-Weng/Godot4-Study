@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://du8sjspcchr0k"]
+
+[ext_resource type="Texture2D" uid="uid://b3y8kpeg4tfjm" path="res://art/persimmon_left.png" id="1_qcpy6"]
+[ext_resource type="Script" uid="uid://ccs2c0gd3mej0" path="res://QuestionScene.gd" id="1_qo1xi"]
+[ext_resource type="Texture2D" uid="uid://c2ipa2brg0fyr" path="res://art/persimmon_right.png" id="2_ea8je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qo1xi"]
+
+[node name="QuestionScene" type="Control" unique_id=647804132]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qo1xi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1446762891]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1548267208]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "諧音梗"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=629177352]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="LeftBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=190708819]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LeftImage" type="TextureRect" parent="VBoxContainer/HBoxContainer/LeftBox" unique_id=1959897140]
+layout_mode = 2
+texture = ExtResource("1_qcpy6")
+
+[node name="RightBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1582723768]
+layout_mode = 2
+
+[node name="RightImage" type="TextureRect" parent="VBoxContainer/HBoxContainer/RightBox" unique_id=2002177621]
+layout_mode = 2
+texture = ExtResource("2_ea8je")
+
+[node name="Image" type="TextureRect" parent="VBoxContainer" unique_id=755189505]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="VBoxContainer" unique_id=946398107]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="VBoxContainer" unique_id=1268884651]
+layout_mode = 2
+
+[node name="InputEdit" type="LineEdit" parent="VBoxContainer" unique_id=1155818900]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+alignment = 1
+
+[node name="SubmitButton" type="Button" parent="VBoxContainer" unique_id=561428095]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qo1xi")
+text = "送出"
+
+[node name="NextButton" type="Button" parent="VBoxContainer" unique_id=1295053172]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "下一題"
