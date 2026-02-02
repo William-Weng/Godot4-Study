@@ -1,4 +1,4 @@
-# 學習Godot 4的種種
+# [學習Godot 4的記錄](https://godotengine.org/)
 
 |名稱|內容|
 |---|---|
